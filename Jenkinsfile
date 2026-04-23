@@ -3,6 +3,10 @@ pipeline{
 	tools {
 		nodejs 'NodeJS'
 	}
+	environment {
+		SONAR_PROJECT_KEY = 'complete-cicd-02'
+		SONAR_SCANNER_HOME = 'SonarQubeScanner'
+	}
 	stages{
 		stage('Github Chueckout'){
 			steps{
@@ -15,6 +19,22 @@ pipeline{
 					sh 'npm install'
 				}
 			}
+		stage('Sonarqube Analysis'){
+			steps{
+				withCredentials([string(credentialsId: 'complete-cicd-02', variable: 'SONAR_TOKEN')]) {
+    // some block
+				withSonarQubeEnv(credentialsId: 'Sonarqube') {
+					sh """
+					${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+					-Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+              		-Dsonar.sources=. \
+              		-Dsonar.host.url=http://localhost:9000 \
+              		-Dsonar.token=${SONAR_TOKEN}
+    // some block
+}
+}
+			}
+		}
 		}
 		
 	}
