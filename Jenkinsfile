@@ -44,5 +44,17 @@ pipeline {
 				}
             }
         }
+
+		stage('Docker Build'){
+			steps{
+				sh 'docker build -t node-app .'
+			}
+		}
+
+		stage('Search docker image'){
+			steps{
+				echo $(docker images)
+			}
+		}
     }
 }
