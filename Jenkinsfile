@@ -27,6 +27,7 @@ pipeline {
 
         stage('Sonarqube Analysis') {
             steps {
+				script {
 				def scannerHome = tool 'SonarQubeScanner'
 
                 withCredentials([string(credentialsId: 'complete-cicd-02', variable: 'SONAR_TOKEN')]) {
@@ -40,6 +41,7 @@ pipeline {
                         """
                     }
                 }
+				}
             }
         }
     }
