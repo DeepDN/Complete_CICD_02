@@ -7,7 +7,6 @@ pipeline {
 
     environment {
         SONAR_PROJECT_KEY = 'complete-cicd-02'
-        SONAR_SCANNER_HOME = 'SonarQubeScanner'
     }
 
     stages {
@@ -28,10 +27,12 @@ pipeline {
 
         stage('Sonarqube Analysis') {
             steps {
+				def scannerHome = tool 'SonarQubeScanner'
+
                 withCredentials([string(credentialsId: 'complete-cicd-02', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('Sonarqube') {
                         sh """
-                            ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+                            ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                             -Dsonar.sources=. \
                             -Dsonar.host.url=http://sonarqube:9000 \
