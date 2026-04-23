@@ -53,7 +53,7 @@ pipeline {
 
 		stage('Search docker image'){
 			steps{
-				echo $(docker images)
+				sh 'docker images'
 			}
 		}
     }
