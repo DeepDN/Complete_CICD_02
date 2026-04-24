@@ -47,14 +47,12 @@ pipeline {
 
 		stage('Docker Build'){
 			steps{
-				sh 'docker build -t node-app .'
+				script{
+					def myimage = docker.build("node-app:latest")
+				}
 			}
 		}
 
-		stage('Search docker image'){
-			steps{
-				sh 'docker images'
-			}
-		}
+		
     }
 }
