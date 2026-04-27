@@ -6,6 +6,8 @@ jobs:
   Git-checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: github checkout
-        run: action/checkout@v6
+      - name: checkout repository code
+        run: actions/checkout@v4
+      - name: run a oneline script
+        run: echo "This is testing script"
   
