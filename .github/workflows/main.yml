@@ -1,13 +1,10 @@
-name: CICD Piepline
-on: 
-  push: 
-    branches: main
+name: GitHub Actions Demo
+on: push
 jobs:
-  Git-checkout:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repository code
-        run: actions/checkout@v4
-      - name: run a oneline script
-        run: echo "This is testing script"
-  
+      - name: Check out repository code
+        uses: actions/checkout@v6
+      - name: Run a one-line script
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."   
