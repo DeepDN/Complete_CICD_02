@@ -1,0 +1,12 @@
+name: CICD Piepline
+run-name: 
+on: 
+  push: 
+    branches: main
+jobs:
+  Git-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github checkout
+        run: action/checkout@v6
+      
