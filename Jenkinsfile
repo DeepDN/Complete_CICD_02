@@ -9,8 +9,8 @@ pipeline{
                     git branch: 'main', credentialsId: 'jen-git-dind', url: 'https://github.com/DeepDN/Complete_CICD_02.git'
                 }
             }
-            stage{
-                steps('Unit test') {
+            stage('Unit test') {
+                steps{
                     sh 'npm test'
                     sh 'npm install'
 
