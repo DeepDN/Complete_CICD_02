@@ -48,7 +48,15 @@ pipeline{
             }
             stage('Trivy scan'){
                 steps{
-                    sh 'trivy --severity HIGH,CRITICAL --no-progress --format table -o trivy-report.html image ${JOB_NAME_NOW}:latest'
+                    sh """
+                    trivy image \
+                        --severity HIGH,CRITICAL \
+                        --no-progress \
+                        --format template \
+                        --template "@/usr/local/share/trivy/templates/html.tpl" \
+                        -o trivy-report.html \
+                        ${JOB_NAME_NOW}:latest
+                    """
                 }
             }
 
