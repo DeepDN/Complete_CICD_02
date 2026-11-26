@@ -6,6 +6,7 @@ pipeline{
     environment {
         SONAR_PROJECT_KEY= 'Complete-cicd-02'
         SONAR_SCANNER_HOME= tool 'SonarQubeScanner'
+        DOCKER_HUM_REPO=deepakdn999/complete-cicd-02
 
     }
         stages{
@@ -34,6 +35,12 @@ pipeline{
     
 }
 }
+                }
+            }
+
+            stage('Docker image'){
+                steps{
+                    docker.build("$(DOCKER_HUM_REPO)")
                 }
             }
 
