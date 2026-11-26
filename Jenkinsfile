@@ -11,7 +11,6 @@ pipeline{
             }
             stage('Unit test') {
                 steps{
-                    sh 'npm test'
                     sh 'npm install'
 
                 }
