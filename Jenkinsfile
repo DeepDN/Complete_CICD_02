@@ -52,8 +52,7 @@ pipeline{
                     trivy image \
                         --severity HIGH,CRITICAL \
                         --no-progress \
-                        --format template \
-                        --template "@/usr/local/share/trivy/templates/html.tpl" \
+                        --format table \
                         -o trivy-report.html \
                         ${JOB_NAME_NOW}:latest
                     """
