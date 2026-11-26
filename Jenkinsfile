@@ -33,14 +33,16 @@ pipeline{
                         -Dsonar.login=${SONAR_TOKEN}
                         """
     
-}
-}
+                        }
+                    }
                 }
             }
 
             stage('Docker image'){
                 steps{
-                    docker.build("$(DOCKER_HUM_REPO)")
+                    script {
+                        docker.build("$(DOCKER_HUM_REPO):latest")
+                        }
                 }
             }
 
