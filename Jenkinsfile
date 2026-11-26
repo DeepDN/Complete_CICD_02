@@ -1,4 +1,4 @@
-pipeline
+pipeline{
     agent any
         stages{
             stage('Github'){
@@ -8,3 +8,4 @@ pipeline
             }
 
         }
+}
